@@ -1,0 +1,32 @@
+<div class="container offset-top-20">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3" id="logindev">
+      <div class="panel panel-default">
+        <div class="panel-heading">登录</div>
+        <%= devise_error_messages! %>
+        <div class="panel-body">
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), remote: true, html: { class: '' }) do |f| %>
+          <div class="form-group">
+            <%= f.text_field :email, type: :email, class: "form-control input", placeholder: "用户名 / Email" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :password, type: :password, class: "form-control input", placeholder: "密码" %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+          <div class="from-group checkbox">
+              <label for="user_remember_me">
+                <%= f.check_box :remember_me %> <%= t("common.remember_me") %>
+              </label>
+          </div>
+          <% end -%>
+          <div class="form-actions">
+              <%= f.submit 'Sign In', class: "btn btn-primary btn btn-block", 'data-disable-with' => 'Signing...' %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
