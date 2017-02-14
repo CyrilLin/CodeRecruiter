@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-
   get '/', to: 'home#index'
 
   namespace :manager do
     get '/', to: 'home#index'
+    resources :interviews
   end
 
   devise_for :users, controllers: {registrations: 'users/registrations'}

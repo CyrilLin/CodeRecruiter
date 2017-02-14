@@ -10,7 +10,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213083143) do
+ActiveRecord::Schema.define(version: 20170213151442) do
+
+  create_table "interview_phases", force: :cascade do |t|
+    t.integer  "interview_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "stats"
+    t.integer  "rank"
+    t.boolean  "live_interview"
+    t.string   "live_token"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["interview_id"], name: "index_interview_phases_on_interview_id"
+  end
+
+  create_table "interview_tasks", force: :cascade do |t|
+    t.integer  "interview_phase_id"
+    t.string   "title"
+    t.text     "description"
+    t.text     "code"
+    t.text     "test_case"
+    t.text     "instruction"
+    t.integer  "languages_id"
+    t.integer  "time_limit"
+    t.integer  "exec_times"
+    t.integer  "failed_times"
+    t.integer  "finish_time"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["interview_phase_id"], name: "index_interview_tasks_on_interview_phase_id"
+    t.index ["languages_id"], name: "index_interview_tasks_on_languages_id"
+  end
+
+  create_table "interviews", force: :cascade do |t|
+    t.integer  "interviewer_id"
+    t.integer  "candidate_id"
+    t.integer  "stats"
+    t.text     "comment"
+    t.integer  "rank"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.text   "description"
+    t.string "run_time"
+    t.text   "exec_command"
+  end
+
+  create_table "phase_templates", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "author_id"
+    t.string   "image_url"
+    t.integer  "stars"
+    t.boolean  "public"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "task_templates", force: :cascade do |t|
+    t.integer  "phase_template_id"
+    t.string   "title"
+    t.text     "description"
+    t.text     "code"
+    t.text     "test_case"
+    t.text     "instruction"
+    t.integer  "languages_id"
+    t.integer  "time_limit"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["languages_id"], name: "index_task_templates_on_languages_id"
+    t.index ["phase_template_id"], name: "index_task_templates_on_phase_template_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Interviews</h1>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">待面试</div>
+  <table class="table table-hover">
+    <% @interviews.each do |interview| %>
+    <tr>
+      <td><%= interview.candidate.email%></td>
+      <td><%= interview.candidate.nick_name%></td>
+      <td><%= format_stats(interview) %></td>
+      <td><%= link_to '查看', manager_interview_path(interview) %></td>
+      <td><%= link_to '删除', manager_interview_path(interview), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">面试中</div>
+  <table class="table table-hover">
+    <% @interviews.each do |interview| %>
+    <tr>
+      <td><%= interview.candidate.email%></td>
+      <td><%= interview.candidate.nick_name%></td>
+      <td><%= format_stats(interview)  %></td>
+      <td><%= link_to '查看', manager_interview_path(interview) %></td>
+      <td><%= link_to '删除', manager_interview_path(interview), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+
+<div class="panel panel-success">
+  <div class="panel-heading">已面试</div>
+  <table class="table hover">
+    <% @interviews.each do |interview| %>
+    <tr>
+      <td><%= interview.candidate.email%></td>
+      <td><%= interview.candidate.nick_name%></td>
+      <td><%= format_stats(interview) %></td>
+      <td><%= link_to '查看', manager_interview_path(interview) %></td>
+      <td><%= link_to '删除', manager_interview_path(interview), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<br>
+
+<%= link_to 'New Interview', new_manager_interview_path %>

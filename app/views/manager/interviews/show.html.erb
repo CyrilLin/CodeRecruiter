@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>邮箱:</strong>
+  <%= @interview.candidate.email %>
+</p>
+<p>
+  <strong>名称:</strong>
+  <%= @interview.candidate.nick_name %>
+</p>
+<p>
+  <strong>面试官:</strong>
+  <%= @interview.interviewer.nick_name %>
+</p>
+<p>
+  <strong>状态:</strong>
+  <%= @interview.stats %>
+</p>
+
+<%= link_to 'Edit', edit_manager_interview_path(@interview) %> |
+<%= link_to 'Back', manager_interviews_path %>
