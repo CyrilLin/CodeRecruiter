@@ -1,0 +1,11 @@
+<table class="table table-hover">
+  <% interviews.each do |interview| %>
+    <tr>
+      <td><%= interview.candidate_email%></td>
+      <td><%= interview.candidate_name%></td>
+      <td><%= format_stats(interview) %></td>
+      <td><%= link_to '查看', manager_interview_path(interview) %></td>
+      <td><%= link_to '删除', manager_interview_path(interview), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

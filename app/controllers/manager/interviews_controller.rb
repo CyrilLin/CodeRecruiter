@@ -4,7 +4,7 @@ class Manager::InterviewsController < Manager::ApplicationController
   # GET /interviews
   # GET /interviews.json
   def index
-    @interviews = Interview.all
+    @interviews = current_user.interviews
   end
 
   # GET /interviews/1

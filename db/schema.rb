@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213151442) do
+ActiveRecord::Schema.define(version: 20170214150701) do
 
   create_table "interview_phases", force: :cascade do |t|
     t.integer  "interview_id"
@@ -45,12 +45,14 @@ ActiveRecord::Schema.define(version: 20170213151442) do
 
   create_table "interviews", force: :cascade do |t|
     t.integer  "interviewer_id"
-    t.integer  "candidate_id"
     t.integer  "stats"
     t.text     "comment"
     t.integer  "rank"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "candidate_token"
+    t.string   "candidate_email"
+    t.string   "candidate_name"
   end
 
   create_table "languages", force: :cascade do |t|
